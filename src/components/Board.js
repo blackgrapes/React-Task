@@ -164,7 +164,6 @@ export const Board = ({ board, task, tasks, index, setTasks }) => {
             </Box> */}
             {task.id === 2 && <Grid>{second}</Grid>}
           </Grid>
-
           {task.id !== 3 ? (
             <Grid item xs={12} className={classes.bottomBox}>
               {task.id === 1 ? (
