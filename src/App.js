@@ -1,9 +1,9 @@
 import React from "react";
 import "./App.css";
 import { makeStyles } from "@material-ui/core/styles";
-import { Board } from "./components/Board";
+import TasksPage from "./components/TasksPage";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   root: {
     display: "flex",
   },
@@ -21,7 +21,7 @@ function App() {
   return (
     <div className={classes.root}>
       <main className={classes.content}>
-        <Board />
+        <TasksPage />
       </main>
     </div>
   );
