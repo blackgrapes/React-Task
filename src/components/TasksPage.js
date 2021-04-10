@@ -13,14 +13,13 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(2),
     display: "flex",
     flex: "1 1 auto",
-    height: "100%",
   },
   boardsWrap: {
     display: "flex",
     flex: "1 1 auto",
     overflowX: "auto",
     overflowY: "hidden",
-    height: "100%",
+    height: "100vh",
   },
   boardsContent: {
     display: "flex",
@@ -31,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
   boardCard: {
     width: "380px",
     display: "flex",
-    maxHeight: "100%",
+    maxHeight: "100vh",
     overflowX: "hidden",
     overflowY: "hidden",
     marginLeft: "8px",

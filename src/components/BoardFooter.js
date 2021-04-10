@@ -1,8 +1,10 @@
 import React, { useState } from "react";
-import { Button, CardActionArea, CardContent } from "@material-ui/core";
+import { Button } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-import { InputAdd } from "./InputAdd";
+import { Add } from "@material-ui/icons";
 
+import { InputAdd } from "./InputAdd";
+// CardContent
 const useStyles = makeStyles((theme) => ({
   boardButton: {
     padding: theme.spacing(2),
@@ -13,6 +15,7 @@ const useStyles = makeStyles((theme) => ({
 export const BoardFooter = ({ setTasks, tasks }) => {
   const classes = useStyles();
   const [showInput, setShowInput] = useState(false);
+  const [title, setTitle] = useState();
 
   const handleAddCard = (e) => {
     e.preventDefault();
@@ -23,35 +26,45 @@ export const BoardFooter = ({ setTasks, tasks }) => {
   };
 
   const handleAddData = () => {
-    // e.preventDefault();
-    let taksdata = tasks[0];
-    const newData = taksdata.boards.concat({
-      id: (taksdata?.boards?.[taksdata?.boards.length - 1]?.id || 0) + 1,
-      title: "Test",
-    });
-    taksdata.boards = newData;
-    tasks[0] = taksdata;
-    setShowInput(false);
-    setTasks(tasks);
+    if (title) {
+      let taksdata = tasks[0];
+      const newData = taksdata.boards.concat({
+        id: (taksdata?.boards?.[taksdata?.boards.length - 1]?.id || 0) + 1,
+        title: title,
+      });
+      taksdata.boards = newData;
+      tasks[0] = taksdata;
+      setShowInput(false);
+      setTasks(tasks);
+    }
   };
 
   if (!showInput) {
     return (
-      <CardActionArea>
-        <CardContent onClick={handleAddCard}>
-          <>
-            <Button style={{ backGroundColor: "#fff" }}>Add Task</Button>
-          </>
-        </CardContent>
-      </CardActionArea>
+      <div style={{ display: "flex" }} className={classes.boardButton}>
+        <Button
+          onClick={handleAddCard}
+          style={{
+            backgroundColor: "lightblue",
+          }}
+        >
+          <Add /> Add Task
+        </Button>
+      </div>
     );
   } else {
     return (
       <form className={classes.boardButton}>
-        <InputAdd handleClose={handleCloseInput} />
-        <Button onClick={handleAddData} color="primary">
-          Add
-        </Button>
+        <>
+          <InputAdd
+            handleClose={handleCloseInput}
+            onChange={(data) => setTitle(data)}
+            onPresEnter={handleAddData}
+          />
+          <Button onClick={handleAddData} color="primary">
+            Add
+          </Button>
+        </>
       </form>
     );
   }

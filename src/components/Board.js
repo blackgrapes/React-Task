@@ -127,7 +127,7 @@ export const Board = ({ board, task, tasks, index, setTasks }) => {
       funOut.hours * RATE +
       (funOut.minutes / 60) * RATE +
       (funOut.secondes / 3600) * RATE;
-    totalAmount = parseFloat(totalAmount).toFixed(2);
+    totalAmount = parseFloat(totalAmount).toFixed(3);
     console.log({ totalAmount, funOut });
     const newTask = tasksData[2].boards.concat({
       ...boardData,
@@ -169,25 +169,29 @@ export const Board = ({ board, task, tasks, index, setTasks }) => {
           {task.id !== 3 ? (
             <Grid item xs={12} className={classes.bottomBox}>
               {task.id === 1 ? (
-                <Button
-                  style={{
-                    backgroundColor: "#007FF9",
-                    color: "#fff",
-                  }}
-                  onClick={() => moveInInProgress(index)}
-                >
-                  Start
-                </Button>
+                <div>
+                  <Button
+                    style={{
+                      backgroundColor: "#007FF9",
+                      color: "#fff",
+                    }}
+                    onClick={() => moveInInProgress(index)}
+                  >
+                    Start
+                  </Button>
+                </div>
               ) : (
-                <Button
-                  style={{
-                    backgroundColor: "green",
-                    color: "#fff",
-                  }}
-                  onClick={() => moveInInDone(index)}
-                >
-                  Resolve
-                </Button>
+                <>
+                  <Button
+                    style={{
+                      backgroundColor: "green",
+                      color: "#fff",
+                    }}
+                    onClick={() => moveInInDone(index)}
+                  >
+                    Resolve
+                  </Button>
+                </>
               )}
             </Grid>
           ) : (

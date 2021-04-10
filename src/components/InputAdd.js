@@ -11,11 +11,19 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const InputAdd = ({ handleClose }) => {
+export const InputAdd = ({ handleClose, onChange, onPresEnter }) => {
   const classes = useStyles();
 
   return (
     <TextField
+      required
+      onChange={(e) => onChange(e.target.value)}
+      onKeyPress={(e) => {
+        if (e.key === "Enter") {
+          e.preventDefault();
+          onPresEnter();
+        }
+      }}
       label="Card title"
       variant="outlined"
       fullWidth

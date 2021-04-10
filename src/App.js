@@ -6,13 +6,17 @@ import TasksPage from "./components/TasksPage";
 const useStyles = makeStyles(() => ({
   root: {
     display: "flex",
+    height: "100vh",
   },
   content: {
     flex: "1 1 auto",
-    padding: "64px 15px 15px",
+    paddingBottom: "10px",
+    paddingTop: "10px",
     width: "100%",
     height: "100vh",
     overflow: "hidden",
+    position: "absolute",
+    left: "20%",
   },
 }));
 
