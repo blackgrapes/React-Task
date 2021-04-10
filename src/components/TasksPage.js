@@ -93,7 +93,6 @@ const TasksPage = () => {
   const classes = useStyles();
 
   const handleDataChange = (data) => {
-    console.log();
     setTasks(() => [...data]);
   };
   return (

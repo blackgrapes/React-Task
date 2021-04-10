@@ -28,8 +28,35 @@ export const BoardFooter = ({ setTasks, tasks }) => {
   const handleAddData = () => {
     if (title) {
       let taksdata = tasks[0];
+
+      const taks1Board =
+        (tasks[0] &&
+          tasks[0]?.boards?.reduce(
+            (prev, current) => (prev.id > current.id ? prev.id : current.id),
+            1
+          )) ||
+        1;
+      const taks2Board =
+        (tasks?.[1] &&
+          tasks?.[1]?.boards?.reduce(
+            (prev, current) => (prev.id > current.id ? prev.id : current.id),
+            1
+          )) ||
+        1;
+      const taks3Board =
+        (tasks?.[2] &&
+          tasks?.[2]?.boards?.reduce(
+            (prev, current) => (prev.id > current.id ? prev.id : current.id),
+            1
+          )) ||
+        1;
+
+      const maximumId = Math.max(taks1Board, taks2Board, taks3Board);
       const newData = taksdata.boards.concat({
-        id: (taksdata?.boards?.[taksdata?.boards.length - 1]?.id || 0) + 1,
+        id:
+          (taksdata?.boards?.[taksdata?.boards.length - 1]?.id ||
+            maximumId ||
+            1000) + 1,
         title: title,
       });
       taksdata.boards = newData;

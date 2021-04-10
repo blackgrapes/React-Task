@@ -100,7 +100,7 @@ export const Board = ({ board, task, tasks, index, setTasks }) => {
     }, 1000);
 
     return () => clearInterval(secTimer);
-  }, []);
+  }, [board.StartTime]);
   const classes = useStyles();
   const moveInInProgress = (ind) => {
     const tasksData = tasks;
@@ -128,7 +128,6 @@ export const Board = ({ board, task, tasks, index, setTasks }) => {
       (funOut.minutes / 60) * RATE +
       (funOut.secondes / 3600) * RATE;
     totalAmount = parseFloat(totalAmount).toFixed(3);
-    console.log({ totalAmount, funOut });
     const newTask = tasksData[2].boards.concat({
       ...boardData,
       endTime: moment().format(),
