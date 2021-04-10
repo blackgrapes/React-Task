@@ -1,21 +1,28 @@
-import './App.css';
+import React from "react";
+import "./App.css";
+import { makeStyles } from "@material-ui/core/styles";
+import { Board } from "./components/Board";
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    display: "flex",
+  },
+  content: {
+    flex: "1 1 auto",
+    padding: "64px 15px 15px",
+    width: "100%",
+    height: "100vh",
+    overflow: "hidden",
+  },
+}));
 
 function App() {
+  const classes = useStyles();
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={classes.root}>
+      <main className={classes.content}>
+        <Board />
+      </main>
     </div>
   );
 }
