@@ -162,7 +162,7 @@ export const Board = ({ board, task, tasks, index, setTasks }) => {
             {/* <Box component="small" m={1}>
               <Typography variant='body2'>{board.status}</Typography>
             </Box> */}
-            {task.id == 2 && <Grid>{second}</Grid>}
+            {task.id === 2 && <Grid>{second}</Grid>}
           </Grid>
 
           {task.id !== 3 ? (
